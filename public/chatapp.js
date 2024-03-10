@@ -387,6 +387,8 @@ async function displayChats(allgroupchats){
 
 
 
+// add multimeadia like upload photo or document
+
 
 async function userMessagestore(event){
   event.preventDefault();

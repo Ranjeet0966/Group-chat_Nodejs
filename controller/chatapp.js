@@ -46,6 +46,7 @@ const getMessages=async(req,res,next)=>{
 
 ///s3upload
 
+
 const uploadFile=async(req,res,next)=>{
     const {groupId}=req.params;
     const userId=req.user.id;
@@ -73,7 +74,7 @@ const uploadFile=async(req,res,next)=>{
 
 }
 
-
+//added aws bucket for upload pic or document
 async function uploadToS3(data, filename) {
   console.log('------->>>>>>uploadTos3');
 
