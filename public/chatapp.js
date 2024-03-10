@@ -247,7 +247,7 @@ async function RemoveMember(e){
 
 
 
-
+//admin features
 async function changeAdmin(e){
   e.preventDefault();
   const memberEmail=prompt('Enter Member Email You want to make admin')
