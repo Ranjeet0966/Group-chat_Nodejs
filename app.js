@@ -35,7 +35,8 @@ const Message=require('./models/chat');
 const Group=require('./models/group');
 const UserGroup=require('./models/usergroup');
 
-
+const job = require("./jobs/cron");
+job.start();
 app.use(cors({
     origin:'*'
 }));
