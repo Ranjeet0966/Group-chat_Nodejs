@@ -1,14 +1,19 @@
 /* Reset some default styles */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #9daadd;
     margin: 0;
     padding: 0;
-   
+    background-color: #fff; /* Set your desired background color */
+  margin: 2rem; /* Add some margin for spacing */
+  padding: 1rem; /* Add some padding for content spacing */
+  border-radius: 20px; /* Set the desired roundness */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: #e5abab; /* Set your desired background color */
   margin: 2rem; /* Add some margin for spacing */
   padding: 1rem; /* Add some padding for content spacing */
-  border-radius: 15px; /* Set the desired roundness */
+  border-radius: 20px; /* Set the desired roundness */
   border: 2px solid #b81010; /* Add border with desired width and color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -58,6 +63,7 @@ body {
 
 .container {
     display: flex;
+    flex:  auto;
     flex-direction: column;
     align-items: center;
     justify-content: center;
