@@ -37,9 +37,7 @@ const UserGroup=require('./models/usergroup');
 
 const job = require("./jobs/cron");
 job.start();
-app.use(cors({
-    origin:'*'
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
 
@@ -47,17 +45,22 @@ app.use(express.static('public'))
 
 app.use(express.static('views'));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'signup.html'));
-});
 
-app.get('/views/login.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
-  });
-  
+
 app.use('/user',userRoutes);
 app.use('/chat',chatRoutes);
 app.use(groupRoutes);
+app.use((req,res)=>{
+    if(req.url==='/'){
+        res.sendFile(path.join(__dirname, 'views', 'signup.html'));
+    }
+    else{
+        res.sendFile(path.join(__dirname,`${req.url}`))
+    }
+})
+ 
+  
+
 
 
 User.hasMany(Message);
@@ -71,15 +74,11 @@ Group.hasMany(Message);
 Message.belongsTo(Group);
 
 
-// sequelize.sync()
-// .then((res)=>{
-//     server.listen(process.env.PORT,()=>console.log(`Server starts at ${process.env.PORT}`))
-// })
-// .catch(err=>console.log(err));
+
 
 sequelize.sync()
   .then(() => {
-    app.listen(process.env.PORT || 3000);
-    //updating
+    server.listen(process.env.PORT || 3000);
+   
   })
   .catch((err) => console.log(err));

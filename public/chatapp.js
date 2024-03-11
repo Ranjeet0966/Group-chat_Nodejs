@@ -332,11 +332,6 @@ try {
 
 }
 
-
-
-
-
-
 async function displayChats(allgroupchats){
   try {
     const token = localStorage.getItem('token');
@@ -383,9 +378,6 @@ async function displayChats(allgroupchats){
     showMessageDiv(error.response.data.msg)
   }
 }
-
-
-
 
 // add multimeadia like upload photo or document
 
@@ -461,8 +453,6 @@ function showfilelink(userFile){
 
 
 }
-
-
 
 
 function showpostmsg(newMsg){

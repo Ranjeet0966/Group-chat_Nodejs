@@ -78,9 +78,9 @@ const uploadFile=async(req,res,next)=>{
 async function uploadToS3(data, filename) {
   console.log('------->>>>>>uploadTos3');
 
-      const BUCKET_NAME = process.env.S3BUCKET_NAME;
-      const IAM_USER_KEY = process.env.S3BUCKET_ACCESS_KEY;
-      const IAM_USER_SECRET = process.env.S3BUCKET_SECRET_KEY;
+      const BUCKET_NAME = process.env.BUCKET_NAME;
+      const IAM_USER_KEY = process.env.IAM_USER_KEY;
+      const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
   
     const s3= new AWS.S3({
         accessKeyId:IAM_USER_KEY,
