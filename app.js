@@ -30,10 +30,13 @@ const sequelize=require('./utils/database');
 const userRoutes=require('./routes/user');
 const chatRoutes=require('./routes/chat');
 const groupRoutes=require('./routes/group')
+const forgotPasswordRouter= require("./routes/password");
+
 const User=require('./models/user');
 const Message=require('./models/chat');
 const Group=require('./models/group');
 const UserGroup=require('./models/usergroup');
+const ForgotPasswordRequests = require("./models/forgotpassword");
 
 const job = require("./jobs/cron");
 job.start();
@@ -49,6 +52,8 @@ app.use(express.static('views'));
 
 app.use('/user',userRoutes);
 app.use('/chat',chatRoutes);
+app.use("/password", forgotPasswordRouter);
+
 app.use(groupRoutes);
 app.use((req,res)=>{
     if(req.url==='/'){
@@ -73,7 +78,8 @@ User.belongsToMany(Group,{through:UserGroup})
 Group.hasMany(Message);
 Message.belongsTo(Group);
 
-
+User.hasMany(ForgotPasswordRequests);
+ForgotPasswordRequests.belongsTo(User);
 
 
 sequelize.sync()
