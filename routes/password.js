@@ -1,13 +1,13 @@
-const passwordController = require("../controller/password");
+const passwordcontrollers = require("../controllers/password");
 const express = require("express");
 const router = express.Router();
 
 
-router.post("/forgotpassword", passwordController.generateForgotPasswordLink);
+router.post("/forgot-Password", passwordcontrollers.generateforgotPasswordLink);
 
-router.get("/forgotpassword/:id", passwordController.resetPassword);
+router.get("/forgot-Password/:id", passwordcontrollers.resetPassword);
 
-router.get("/updatepassword/:resetpasswordid", passwordController.updatepassword);
+router.get("/update-password/:resetpasswordid", passwordcontrollers.updatepassword);
 
 
 

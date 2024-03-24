@@ -35,8 +35,8 @@ const forgotPasswordRouter= require("./routes/password");
 const User=require('./models/user');
 const Message=require('./models/chat');
 const Group=require('./models/group');
-const UserGroup=require('./models/usergroup');
-const ForgotPasswordRequests = require("./models/forgotpassword");
+const UserGroup=require('./models/userGroup');
+const forgotPasswordRequests = require("./models/forgotPassword");
 
 const job = require("./jobs/cron");
 job.start();
@@ -76,12 +76,12 @@ Group.belongsToMany(User,{through:UserGroup});
 User.belongsToMany(Group,{through:UserGroup})
 
 Group.hasMany(Message);
-Message.belongsTo(Group);
+Message.belongsTo(Group); 
 
-User.hasMany(ForgotPasswordRequests);
-ForgotPasswordRequests.belongsTo(User);
+User.hasMany(forgotPasswordRequests);
+forgotPasswordRequests.belongsTo(User);
 
-
+// {force:true}
 sequelize.sync()
   .then(() => {
     server.listen(process.env.PORT || 3000);

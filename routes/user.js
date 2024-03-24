@@ -2,9 +2,9 @@ const express= require('express');
 const routes=express.Router();
 
 
-const userControlller=require('../controller/user');
+const userControlller=require('../controllers/user');
 const userAuthenticate=require('../middleware/authentication')
-const Userchat=require('../controller/chatapp')
+const Userchat=require('../controllers/chatapp')
 
 routes.post('/signup',userControlller.postSignup);
 routes.post('/login',userControlller.postLogin);

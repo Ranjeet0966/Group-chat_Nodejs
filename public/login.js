@@ -15,6 +15,7 @@ async function loginUser(e){
         console.log("Teting",res);
         
         if(res.status===200){
+            console.log(res.data.token);
             localStorage.setItem('token',res.data.token)
             alert(res.data.message);
             window.location.href="../views/chatapp.html"

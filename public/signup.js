@@ -5,7 +5,7 @@ async function createUser(e){
      const user={
          name:e.target.name.value,
          email:e.target.email.value,
-         phonenumber:e.target.phonenumber.value,
+         phoneNumber:e.target.phoneNumber.value,
          password:e.target.password.value
      }
      

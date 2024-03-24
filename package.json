@@ -11,6 +11,7 @@
     "mysql2": "^3.9.2",
     "node": "^21.7.1",
     "sequelize": "^6.37.1",
-    "socket.io": "^4.7.4"
+    "sib-api-v3-sdk": "^8.5.0",
+    "socket.io": "^4.7.5"
   }
 }

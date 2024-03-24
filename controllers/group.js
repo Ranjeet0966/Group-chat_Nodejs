@@ -1,12 +1,12 @@
 const User=require('../models/user');
 const Message=require('../models/chat');
 const Group = require('../models/group');
-const UserGroup = require('../models/usergroup');
+const UserGroup = require('../models/userGroup');
 
 async function createNewGroup(req,res,next){
     const {groupname}=req.body;
     try {
-        const group=await Group.create({groupname,createdBy:req.user.id});
+        const group=await Group.create({name:groupname,createdBy:req.user.id});
         await UserGroup.create({groupId:group.id,userId:req.user.id});
         res.status(201).json({msg:`Successfully Created group ${groupname}`})
         
@@ -74,7 +74,7 @@ async function removeMemberinGroup(req,res,next){
       const member=await UserGroup.findOne({where:{groupId,userId:user.id}})
       if(!member) return res.status(404).json({msg:"User Already not a Member in the group",success:false})
        
-      await UserGroup.destroy({groupId,userId:user.id});
+      await UserGroup.truncate({groupId,userId:user.id});
       res.status(201).json({msg:"Member Removed Successfully",success:true})
   } catch (error) {
       console.log(error);

@@ -23,7 +23,7 @@ const User=sequelize.define('user',{
         allowNull:false,
 
     },
-    phonenumber:
+    phoneNumber:
     {
         type:Sequelize.STRING,
         unique:true,
@@ -38,3 +38,5 @@ const User=sequelize.define('user',{
 
 
 module.exports=User;
+
+

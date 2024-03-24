@@ -1,3 +1,4 @@
+// const { ElasticBeanstalk } = require("aws-sdk");
 
 const socket = io.connect("http://localhost:3000");
 
@@ -41,18 +42,18 @@ socket.on("file",(message,userName,groupId,userId) => {
 })
 
 
-// socket.on('connect',()=>{
-//   console.log('SocketIO connected')
-// })
+socket.on('connect',()=>{
+  console.log('SocketIO connected')
+})
 
 
 //domcontent
 
-window.addEventListener('DOMContentLoaded',async()=>{
-    dispalyGroupLeft();
-    loadchats();
-  
-})
+window.addEventListener('DOMContentLoaded',
+    // await dispalyGroupLeft();
+    loadchats(),
+   dispalyGroupLeft()
+)
 
 
 function parseJwt (token) {
@@ -70,6 +71,7 @@ function parseJwt (token) {
 async function createNewGroup(){
   const groupname=prompt("Enter the New Group Name:")
 try {
+  
   if(groupname){
     const token=localStorage.getItem('token');
     const res=await axios.post('http://localhost:3000/groups',{groupname},{headers:{"Authorization":token}})
@@ -105,6 +107,7 @@ async function getAllgroups(){
     const token =localStorage.getItem('token');
     const res=await axios.get('http://localhost:3000/groups',{headers:{"Authorization":token}})
     return res.data.groups;
+    
   } catch (error) {
     document.body.innerHTML+=`<div style="color: red;text-align: center;">
                                    <h3>${error}</h3>
@@ -127,7 +130,7 @@ async function dispalyGroupLeft(){
                 li.setAttribute('groupId',groups[i].id);
                 li.setAttribute('createdBy',groups[i].createdBy);
                 if(groups[i].createdBy===userId) console.log(true);
-                li.textContent=groups[i].groupname;
+                li.textContent=groups[i].name;
                 if(groups[i].createdBy===userId){
 
                   let addButton=document.createElement('button');
@@ -178,7 +181,8 @@ async function dispalyGroupLeft(){
 }
 
 function logout() {
-  localStorage.removeItem('token')
+   localStorage.removeItem('token')
+  
   window.location.href = '../views/login.html';
 }
 
@@ -324,6 +328,8 @@ try {
     console.log(res.data.allGroupMessages);
     displayChats(res.data.allGroupMessages);
 
+
+
 } catch (error) {
     console.log(error);
     showMessageDiv(error.response.data.msg)
@@ -346,7 +352,7 @@ async function displayChats(allgroupchats){
     }  
     for (const chat of allgroupchats) {
       const newPara = document.createElement('li');
-   if(chat.type == 'text'){
+   if(chat.type == 'content'){
       if (chat.userId === currentUser.userId) {
         newPara.innerText = `You: ${chat.message}`;
       } else {
@@ -383,6 +389,7 @@ async function displayChats(allgroupchats){
 
 
 async function userMessagestore(event){
+
   event.preventDefault();
   try {
 

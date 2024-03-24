@@ -23,10 +23,10 @@ const isstringinvalid=(string)=>
 //After Signup
 const postSignup=async (req,res,next)=>{
 
-    const {name,email,phonenumber,password}=req.body;
+    const {name,email,phoneNumber,password}=req.body;
     try {
        
-        if(isstringinvalid(name)||isstringinvalid(email)||isstringinvalid(phonenumber)||isstringinvalid(password)){
+        if(isstringinvalid(name)||isstringinvalid(email)||isstringinvalid(phoneNumber)||isstringinvalid(password)){
             return res.status(400).json({message:'Some field is missing or inappropriate',success:false})
         }
 
@@ -39,7 +39,7 @@ const postSignup=async (req,res,next)=>{
              let saltRound=10;
             bcrypt.hash(password,saltRound,async (err,hash)=>{
             if(err) console.log(err);
-            await User.create({name,email,phonenumber,password:hash});
+            await User.create({name,email,phoneNumber,password:hash});
             res.status(200).json({message:'Successfully created a User',success:false})
          })
 

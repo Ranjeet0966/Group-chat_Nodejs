@@ -6,6 +6,8 @@ const User=require('../models/user');
 const authenticate=async(req,res,next)=>{
     const token=req.header('Authorization')
     try {
+        console.log(token);
+        console.log(process.env.JSON_WEB_SECRETKEY);
         const user=jwt.verify(token,process.env.JSON_WEB_SECRETKEY);
         console.log('userId',user.userId);
         const dataUser=await User.findByPk(user.userId);

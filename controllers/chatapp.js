@@ -14,7 +14,7 @@ const postMesage=async (req,res,next)=>{
     console.log(message,groupId);
     try {
        await Message.create({
-        message,name:req.user.name,userId:req.user.id,groupId,type:'text'
+        message,name:req.user.name,userId:req.user.id,groupId,type:'content'
     });
      const newMessage={message,name:req.user.name,userId:req.user.id}
     res.status(200).json({newMessage,msg:'successfull sent',success:true})
