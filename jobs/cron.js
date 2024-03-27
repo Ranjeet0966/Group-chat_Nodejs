@@ -1,5 +1,5 @@
 const CronJob = require("cron").CronJob;
-const sequelize = require("../utils/database");
+const sequelize = require("../util/database");
 const Sequelize = require("sequelize");
 const Chat = require("../models/chat");
 const ArchivedChat = require("../models/archivedMessage");

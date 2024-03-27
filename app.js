@@ -26,7 +26,7 @@ io.on("connection",(socket)=>{
 
 require('dotenv').config()
 
-const sequelize=require('./utils/database');
+const sequelize=require('./util/database');
 const userRoutes=require('./routes/user');
 const chatRoutes=require('./routes/chat');
 const groupRoutes=require('./routes/group')
