@@ -3,7 +3,7 @@ const routes=express.Router();
 const multer=require('multer')
 
 const userAuthenticate=require('../middleware/authentication')
-const Userchat=require('../controllers/chatApp');
+const Userchat=require('../controllers/chatapp');
 const upload=multer();
 
 
