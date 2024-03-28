@@ -35,8 +35,8 @@ const forgotPasswordRouter= require("./routes/password");
 const User=require('./models/user');
 const Message=require('./models/chat');
 const Group=require('./models/group');
-const UserGroup=require('./models/userGroup');
-const forgotPasswordRequests = require("./models/forgotPassword");
+const UserGroup=require('./models/user_group');
+const forgotPasswordRequests = require("./models/forgot_password");
 
 const job = require("./jobs/cron");
 job.start();
